@@ -1,0 +1,122 @@
+<!-- addstudents.html -->
+{% extends 'mangement/home.html' %}
+{% load static %}
+{% block contents %}
+<style>
+    /* Add your custom styles here */
+    .form-container {
+        top: 100px;
+        align-items: center;
+        position: relative;
+        z-index: 1000;
+        max-width: 65%;
+        height: 500px; /* Add a fixed height */
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 0%;
+        align-items: flex-start;
+        justify-content: flex-start;
+        overflow: auto;
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: rgb(13, 12, 12);
+    }
+
+    .form-container form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .form-container form label {
+        margin-bottom: 10px;
+    }
+
+    .form-container form input[type="text"],
+    .form-container form input[type="email"],
+    .form-container form select {
+        width: 100%;
+        
+        padding: 10px;
+        border: 1px solid #1f1c1c;
+        border-radius: 5px;
+    }
+
+    .form-container form button {
+        grid-column: span 2;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .form-container form button:hover {
+        background-color: #0056b3;
+    }
+
+    .form-container .error {
+        color: red;
+    }
+</style>
+<center>
+    <div class="form-container">
+        <h2>Add Student</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <label for="Name" style="color: black;">Student Name:</label>
+                {{ form.Name }}
+            </div>
+            <div>
+                <label for="Hallticket" style="color: black;">Hallticket:</label>
+                {{ form.Hallticket }}
+            </div>
+            <div>
+                <label for="password" style="color: black;">password:</label>
+                {{ form.password }}
+            </div>
+            <div>
+                <label for="email" style="color: black;">email:</label>
+                {{ form.email }}
+            </div>
+            <div>
+                <label for="Branch" style="color: black;">Branch:</label>
+                {{ form.Branch }}
+            </div>
+            <div>
+                <label for="CasteCategory" style="color: black;">CasteCategory:</label>
+                {{ form.CasteCategory }}
+            </div>
+            <div>
+                <label for="Fathername" style="color: black;">Fathername:</label>
+                {{ form.Fathername }}
+            </div>
+            <div>
+                <label for="Mothername" style="color: black;">Mothername:</label>
+                {{ form.Mothername }}
+            </div>
+            <div>
+                <label for="aadhar" style="color: black;">aadhar:</label>
+                {{ form.aadhar }}
+            </div>
+            <div>
+                <label for="profileimg" style="color: black;">profileimg:</label>
+                {{ form.profileimg }}
+            </div>
+            <button type="submit">ADD STUDENTS</button>
+      
+            
+        </form>
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+</center>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'mangement/home.html' %}
+{% load static %}
+{%block content%}
+<style>
+    /* Style for the appointment form */
+    .form-container {
+        position: relative;
+        z-index: 1px;
+        margin-top: 20px;
+        /* Adjust margin as needed */
+    }
+
+    /* Style for the form itself */
+    form {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for the form header */
+    h1 {
+        color: #007bff;
+        /* Primary color */
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Style for the input fields */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 100%;
+    }
+
+    /* Style for the button */
+    button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        /* Center the button horizontally */
+    }
+
+    /* Style for the button on hover */
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+        /* Darker shade of primary color */
+    }
+</style>
+<div class="row mt-3">
+    <h1 class="text-center text-primary">Welcome! {{request.session.loggeduser|title}}</h1>
+    <center>
+        <h2><u>Make an Appointment</u></h2>
+    </center>
+    {% comment %} <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit
+        sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
+        sit in iste officiis commodi quidem hic quas.</p> {% endcomment %}
+</div>
+
+<form action="#" method="post" role="form" data-aos-delay="100">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-4 form-group">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+        </div>
+        <div class="col-md-4 form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+        </div>
+        <div class="col-md-4 form-group mt-3 mt-md-0">
+            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+        </div>
+    </div>
+    {% comment %} <form action="/action_page.php">
+        <label for="birthdaytime">Birthday (date and time):</label>
+        <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+        <input type="submit">
+    </form> {% endcomment %}
+    <div class="row">
+        <div class="col-md-4 form-group mt-3">
+            {% comment %} <label for="Appointmentdate"></label> {% endcomment %}
+            <input type="datetime-local" name="date" class="form-control datepicker" id="date"
+                placeholder="Appointment date and time" required>
+        </div>
+        {% comment %} <div class="col-md-4 form-group mt-3">
+            <select name="department" id="department" class="form-select">
+                <option value="">Select Department</option>
+                <option value="Department 1">Department 1</option>
+                <option value="Department 2">Department 2</option>
+                <option value="Department 3">Department 3</option>
+            </select>
+        </div> {% endcomment %}
+        <div class="col-md-4 form-group mt-3">
+            <select name="doctor" id="doctor" class="form-select">
+                <option value="">Select Doctor</option>
+                <option value="Doctor 1">Dr.Alex</option>
+                <option value="Doctor 2">Dr.Code</option>
+                {% comment %} <option value="Doctor 3">Dr.</option> {% endcomment %}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group mt-3">
+        <textarea class="form-control" name="disease" rows="5" placeholder="Describe your Issue"></textarea>
+    </div>
+    <div class="my-3">
+        <div class="loading"></div>
+        <div class="error-message"></div>
+        <div class="sent-message"></div>
+    </div>
+    <div class="text-center"><button type="submit">Make an Appointment</button></div>
+</form>
+
+</div>
+{%endblock%}

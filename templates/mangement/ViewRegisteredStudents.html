@@ -1,0 +1,135 @@
+<!-- ViewRegisteredStudents.html-->
+{% extends 'mangement/home.html' %}
+{% load static %}
+{% block contents %}
+
+
+<!-- BEGIN: Content-->
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-start mb-0">Registered Students</h2>
+                        <div class="breadcrumb-wrapper">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{%url 'mhome'%}">Home</a>
+                                </li>
+                                <li class="breadcrumb-item"><a href="#">Students List</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content-body">
+            <!-- Responsive Datatable -->
+            <section id="responsive-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header border-bottom">
+                                <h4 class="card-title"> REGISTERED STUDENTS</h4>
+                            </div>
+                            <div class="card-datatable">
+                                <table class="dt-responsive table">
+                                    <thead>
+                                        <tr>
+                                            <th>S.no</th>
+                                            <th>Name</th>
+                                            <th>Hallticket</th>
+                                            <th>Password</th>
+                                            <th>Email</th>
+                                            <th>Branch</th>
+                                            <th>CasteCategory</th>
+                                            <th>Fathername</th>
+                                            <th>Mothername</th>
+                                            <th>Adhaar</th>
+                                            <th>ProfileImage</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        {% for i in students %}
+                                        <tr>
+                                            <th>{{ forloop.counter }}</th>
+                                            <th>{{ i.Name }}</th>
+                                            <th>{{ i.Hallticket }}</th>
+                                            <th>{{ i.password }}</th>
+                                            <th>{{ i.email }}</th>
+                                            <th>{{ i.Branch }}</th>
+                                            <th>{{ i.CasteCategory }}</th>
+                                            <th>{{ i.Fathername }}</th>
+                                            <th>{{ i.Mothername }}</th>
+                                            <th>{{ i.aadhar }}</th>
+                                            <th><img src="{{ i.profileimg }}" alt="profileImg"></th>
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--/ Responsive Datatable -->
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
+
+<div class="sidenav-overlay"></div>
+<div class="drag-target"></div>
+
+<!-- BEGIN: Footer-->
+<footer class="footer footer-static footer-light">
+    <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2021<a
+                class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span
+                class="d-none d-sm-inline-block">, All rights Reserved</span></span><span
+            class="float-md-end d-none d-md-block">Hand-crafted & Made with<i data-feather="heart"></i></span></p>
+</footer>
+<button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+<!-- END: Footer-->
+
+
+<!-- BEGIN: Vendor JS-->
+<script src="/static/mangment/app-assets/vendors/js/vendors.min.js"></script>
+<!-- BEGIN Vendor JS-->
+
+<!-- BEGIN: Page Vendor JS-->
+<!-- <script src="../../../app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script> -->
+<script src="/static/mangment/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+<script src="/static/mangment/app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+<script src="/static/mangment/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+<script src="/static/mangment/app-assets/vendors/js/tables/datatable/responsive.bootstrap5.js"></script>
+<script src="/static/mangment/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+<!-- END: Page Vendor JS-->
+
+<!-- BEGIN: Theme JS-->
+<script src="/static/mangment/app-assets/js/core/app-menu.js"></script>
+<script src="/static/mangment/app-assets/js/core/app.js"></script>
+<!-- END: Theme JS-->
+
+<!-- BEGIN: Page JS-->
+<script src="/static/mangment/app-assets/js/scripts/tables/table-datatables-advanced.js"></script>
+<!-- END: Page JS-->
+
+<script>
+    $(window).on('load', function () {
+        if (feather) {
+            feather.replace({
+                width: 14,
+                height: 14
+            });
+        }
+    })
+</script>
+
+{% endblock %}
